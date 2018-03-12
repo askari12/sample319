@@ -5,8 +5,8 @@ import javafx.scene.image.Image;
 
 public class Professor extends Enemy
 {
-    public Professor(Location loc, Dimension dimensions, Movement movement, Image img, int type) {
-        super(loc, dimensions, movement, img, type);
+    public Professor(Location loc, Dimension dimensions, Movement movement, Image img) {
+        super(loc, dimensions, movement, img);
     }
 
     @Override

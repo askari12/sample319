@@ -5,8 +5,8 @@ import javafx.scene.image.Image;
 
 public class Lab extends Enemy
 {
-    public Lab(Location loc, Dimension dimensions, Movement movement, Image img, int type) {
-        super(loc, dimensions, movement, img, type);
+    public Lab(Location loc, Dimension dimensions, Movement movement, Image img) {
+        super(loc, dimensions, movement, img);
     }
 
     @Override
