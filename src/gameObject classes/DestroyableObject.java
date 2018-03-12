@@ -1,13 +1,15 @@
 package sample;
 
-import java.awt.*;
 
-public class DestroyableObject extends AttackingObject {
+import javafx.scene.image.Image;
+
+public abstract class DestroyableObject extends AttackingObject {
     private int currentHealth;
     private int maxHealth;
     private boolean destroyed;
-    public DestroyableObject(Location loc, Dimension dimensions, Movement movement, Image img){
 
+    public DestroyableObject(Location loc, Dimension dimensions, Movement movement, Image img){
+        super(loc, dimensions, movement, img);
     }
     public DestroyableObject(){
 
@@ -21,9 +23,12 @@ public class DestroyableObject extends AttackingObject {
         this.currentHealth = currentHealth;
     }
     private void decreaseHealth(int damage){
-
+currentHealth=currentHealth-damage;
     }
-    private boolean isDestroyed(){
+    private boolean isDestroyed()
+    {if (currentHealth<=0)
 return true;
+    else
+        return false;
     }
 }

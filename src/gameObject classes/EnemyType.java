@@ -1,8 +1,8 @@
 package sample;
 
 public enum EnemyType  {
-Obstacle;
-TA;
-Lab;
+Obstacle,
+Ta,
+Lab,
 Professor;
 }

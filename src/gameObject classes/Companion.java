@@ -1,12 +1,10 @@
 package sample;
 
-import java.awt.*;
+import javafx.scene.image.Image;
 
-public class Companion extends AttackingObject {
+public abstract class Companion extends AttackingObject {
     public Companion(Location loc, Dimension dimensions, Movement movement, Image img){
-
+        super(loc, dimensions, movement, img);
     }
-    private void powers(){
-
-    }
+    public abstract  void powers();
 }
