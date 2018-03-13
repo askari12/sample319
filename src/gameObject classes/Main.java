@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -54,24 +55,7 @@ public class Main extends Application {
 
     public void update() {
         player.move();
-        wrap();
-
-    }
-
-    public void wrap() {
-        if (player.getX() < 0 ) {
-            player.setX( (int) primaryStage.getScene().getWidth());
-        } else if (player.getX() > primaryStage.getScene().getWidth()) {
-            player.setX(0);
-        } else if (player.getY() < 0) {
-            player.setY( (int) primaryStage.getScene().getHeight());
-        } else if (player.getY() > primaryStage.getScene().getHeight()) {
-            player.setY(0);
-        }
-    }
-
-    public static void main(String[] args) throws IOException {
-        launch(args);
+        player.wrap();
     }
 
     public void createPlayer() {
@@ -88,4 +72,14 @@ public class Main extends Application {
             e.printStackTrace();
         }
     }
+
+
+    public static void main(String[] args) throws IOException {
+        FileManager fm = new FileManager();
+        fm.updateSound(true);
+        System.out.println(fm.getSoundOn());
+
+        launch(args);
+    }
+
 }

@@ -25,7 +25,7 @@ public class Bullet extends GameObject {
         bullet = new Circle();
         bullet.setCenterX(loc.getX());
         bullet.setCenterY(loc.getY());
-        bullet.setRadius(5);
+        bullet.setRadius(3);
 
         bullet.setStroke(Color.RED);
         bullet.setFill(Color.BLACK);

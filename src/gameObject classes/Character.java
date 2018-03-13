@@ -15,6 +15,9 @@ public class Character extends AttackingObject{
     private Keyboard kb;
     private Circle player;
 
+    private int timer;
+    private int maxTimer;
+
     private Bullet bullet;
 
     public Character(Location loc, Dimension dimensions, Movement movement, Image img, int type, Parent root , Keyboard kb){
@@ -22,6 +25,8 @@ public class Character extends AttackingObject{
         this.type = type;
         this.root = root;
         this.kb = kb;
+        maxTimer = 25;
+        timer = 0;
     }
 
     public Character(){
@@ -84,15 +89,27 @@ public class Character extends AttackingObject{
         }
 
         if (bullet != null) {
-            type++;
+            timer++;
 
             bullet.move();
 
-            if (type >= 25){
-                type = 0;
+            if (timer >= maxTimer){
+                timer = 0;
                 bullet.destroy();
                 bullet = null;
             }
+        }
+    }
+
+    public void wrap() {
+        if (getX() < 0 ) {
+            setX( (int) root.getScene().getWidth());
+        } else if (getX() > root.getScene().getWidth()) {
+            setX(0);
+        } else if (getY() < 0) {
+            setY( (int) root.getScene().getHeight());
+        } else if (getY() > root.getScene().getHeight()) {
+            setY(0);
         }
     }
 
