@@ -12,6 +12,8 @@ public class Keyboard {
     private boolean upPressed;
     private boolean downPressed;
     private boolean spacePressed;
+    private boolean QPressed;
+    private boolean EPressed;
 
     private Stage primaryStage;
 
@@ -43,7 +45,11 @@ public class Keyboard {
                 if (t.getCode().equals(KeyCode.SPACE)) {
                     spacePressed = true;
                 }
-
+                if (t.getCode().equals(KeyCode.Q)) {
+                    QPressed = true;
+                }if (t.getCode().equals(KeyCode.E)) {
+                    EPressed = true;
+                }
             }
         });
 
@@ -68,6 +74,14 @@ public class Keyboard {
 
                 if (t.getCode().equals(KeyCode.SPACE)) {
                     spacePressed = false;
+                }
+
+                if (t.getCode().equals(KeyCode.Q)) {
+                    QPressed = false;
+                }
+
+                if (t.getCode().equals(KeyCode.E)) {
+                    EPressed = false;
                 }
 
             }
@@ -97,4 +111,11 @@ public class Keyboard {
         return spacePressed;
     }
 
+    public boolean getQPressed() {
+        return QPressed;
+    }
+
+    public boolean getEPressed() {
+        return EPressed;
+    }
 }
