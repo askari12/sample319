@@ -21,6 +21,7 @@ public class Main extends Application {
     private Parent root;
     private Keyboard keyboard;
 private  Companion companion;
+    private  Companion companion2;
     private Character player;
     private Lab lab;
     private ArrayList<Enemy> enemyList;
@@ -52,18 +53,22 @@ private  Companion companion;
 
         createPlayer();
         createCompanion();
-    //    createLab();
+        createLab();
         player.renderobject();
         companion.renderobject();
-      //  lab.renderobject();
+        companion2.renderobject();
+        lab.renderobject();
     }
 
     public void update() {
         player.move();
-
         player.wrap();
         companion.move();
     companion.wrap();
+    companion2.move2();
+    companion2.wrap();
+    lab.move();
+    lab.wrap();
     }
 
     public void createPlayer() {
@@ -83,6 +88,15 @@ private  Companion companion;
     public void createCompanion() {
         try {
             companion = new Companion(
+                    new Location(500, 300),
+                    new Dimension(20),
+                    new Movement(0, 0, 5),
+                    new Image(new FileInputStream("C:\\Users\\Enes Varol\\IdeaProjects\\src\\resources\\image.jpeg")),
+                    0,
+                    root,
+                    keyboard,player) {
+            };
+            companion2 = new Companion(
                     new Location(500, 300),
                     new Dimension(20),
                     new Movement(0, 0, 5),

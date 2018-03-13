@@ -76,6 +76,33 @@ public abstract class Companion extends AttackingObject {
         }
     }
 
+    public void move2() {
+        if (true) {
+            loc.setX(character.getX()+40);
+            companion.setCenterX(loc.getX());
+            loc.setY(character.getY()+40);
+            companion.setCenterY(loc.getY());
+
+        }
+        if (true) {
+            if (bullet == null) {
+                shoot();
+            }
+        }
+
+        if (bullet != null) {
+            timer++;
+
+            bullet.move();
+
+            if (timer >= maxTimer){
+                timer = 0;
+                bullet.destroy();
+                bullet = null;
+            }
+        }
+    }
+
     public void wrap() {
         if (getX() < 0 ) {
             setX( (int) root.getScene().getWidth());

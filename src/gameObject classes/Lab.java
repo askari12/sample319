@@ -45,9 +45,37 @@ public class Lab extends Enemy
 
         ((Pane) root).getChildren().add(enemy);
     }
-
+    public void wrap() {
+        if (getX() < 0 ) {
+            setX( (int) root.getScene().getWidth());
+        } else if (getX() > root.getScene().getWidth()) {
+            setX(0);
+        } else if (getY() < 0) {
+            setY( (int) root.getScene().getHeight());
+        } else if (getY() > root.getScene().getHeight()) {
+            setY(0);
+        }
+    }
     @Override
     public void destroy() {
 
+    }
+
+    // Getters and setters
+
+    public int getX(){
+        return loc.getX();
+    }
+
+    public int getY(){
+        return loc.getY();
+    }
+
+    public void setX(int x) {
+        loc.setX(x);
+    }
+
+    public void setY(int y) {
+        loc.setY(y);
     }
 }
