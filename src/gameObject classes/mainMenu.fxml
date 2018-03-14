@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane style="-fx-background-image: url('https://github.com/askari12/2I.A-day-in-BIlkent/blob/Unstable/doc/Analysis%20Report%20Sections/2cabe09d%20(1).jpg?raw=true');" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainMenu">
+
+    <top>
+        <Label style="-fx-font-weight: bold" text="A Day in Bilkent" BorderPane.alignment="CENTER">
+            <font>
+                <Font name="Courier" size="30.0" />
+            </font>
+        </Label>
+    </top>
+
+    <center>
+        <VBox alignment="CENTER" spacing="10" xmlns:fx="http://javafx.com/fxml">
+
+            <Button fx:id="playGameButton" mnemonicParsing="false" style="-fx-background-color: #94CAFF;" text="Play Game" onAction="#playGameButtonListener">
+                <font>
+                    <Font name="Courier" />
+                </font>
+            </Button>
+
+            <Button fx:id="selectCharacterButton" mnemonicParsing="false" style="-fx-background-color: #94CAFF;" text="Select Character" onAction="#selectCharacterButtonListener">
+                <font>
+                    <Font name="Courier" />
+                </font>
+            </Button>
+
+            <Button fx:id="selectCompanionButton" mnemonicParsing="false" style="-fx-background-color: #94CAFF;" text="Select Companion" onAction="#selectCompanionButtonListener">
+                <font>
+                    <Font name="Courier" />
+                </font>
+            </Button>
+
+            <Button fx:id="shopButton" mnemonicParsing="false" style="-fx-background-color: #94CAFF;" text="Shop" onAction="#shopButtonListener">
+                <font>
+                    <Font name="Courier" />
+                </font>
+            </Button>
+
+            <Button fx:id="highScoreButton" mnemonicParsing="false" style="-fx-background-color: #94CAFF;" text="High Score" onAction="#highScoreButtonListener">
+                <font>
+                    <Font name="Courier" />
+                </font>
+            </Button>
+
+            <Button fx:id="settingsButton" mnemonicParsing="false" style="-fx-background-color: #94CAFF;" text="Settings" onAction="#settingsButtonListener">
+                <font>
+                    <Font name="Courier" />
+                </font>
+            </Button>
+
+            <Button fx:id="creditsButton" mnemonicParsing="false" style="-fx-background-color: #94CAFF;" text="Credits" onAction="#creditsButtonListener">
+                <font>
+                    <Font name="Courier" />
+                </font>
+            </Button>
+
+        </VBox>
+
+    </center>
+
+</BorderPane>

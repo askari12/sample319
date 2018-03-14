@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<?import javafx.scene.image.ImageView?>
+<BorderPane style="-fx-background-image: url('https://github.com/askari12/2I.A-day-in-BIlkent/blob/Unstable/doc/Analysis%20Report%20Sections/2cabe09d%20(1).jpg?raw=true');" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Shop" >
+
+    <top>
+
+        <Button fx:id="backButton" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#backButtonListener" style="-fx-background-color: #FFFFFF;" text="Main Menu">
+
+            <padding>
+                <Insets top="10" left="10"/>
+            </padding>
+
+            <font>
+                <Font name="Courier" />
+            </font>
+        </Button>
+
+    </top>
+
+    <center>
+
+        <VBox alignment="TOP_CENTER" spacing="50" xmlns:fx="http://javafx.com/fxml">
+
+            <Label style="-fx-font-weight: bold" text="Shop" BorderPane.alignment="CENTER">
+                <font>
+                    <Font name="Courier" size="30.0" />
+                </font>
+            </Label>
+
+        </VBox>
+
+    </center>
+
+    <right>
+
+        <Label alignment="TOP_LEFT" lineSpacing="10.0" text="gold" textFill="WHITE" BorderPane.alignment="TOP_CENTER">
+
+            <padding>
+                <Insets right="10"/>
+            </padding>
+
+            <font>
+                <Font name="Courier" size="25.0" />
+            </font>
+        </Label>
+
+    </right>
+
+</BorderPane>
