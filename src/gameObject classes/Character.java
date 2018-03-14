@@ -17,7 +17,6 @@ public class Character extends AttackingObject{
 
     private int timer;
     private int maxTimer;
-
     private Bullet bullet;
 
     public Character(Location loc, Dimension dimensions, Movement movement, Image img, int type, Parent root , Keyboard kb){
@@ -82,13 +81,14 @@ public class Character extends AttackingObject{
             player.setCenterY(loc.getY());
         }
 
-        if (true) {
+        if (kb.getSpacePressed()) {
             if (bullet == null) {
                 shoot();
             }
         }
 
         if (bullet != null) {
+
             timer++;
 
             bullet.move();

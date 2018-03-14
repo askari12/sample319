@@ -13,8 +13,9 @@ public class Ta extends Enemy
     private Circle enemy;
     private Bullet bullet;
 
-    public Ta(Location loc, Dimension dimensions, Movement movement, Image img) {
+    public Ta(Location loc, Dimension dimensions, Movement movement, Image img , Parent root) {
         super(loc, dimensions, movement , img);
+        this.root = root;
     }
 
     @Override
@@ -30,7 +31,7 @@ public class Ta extends Enemy
     @Override
     public void move() {
         loc.setY(loc.getY() + movement.getspeed());
-        enemy.setCenterY(loc.getY());
+        //enemy.setCenterY(loc.getY());
     }
 
     @Override

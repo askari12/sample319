@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class FileManager {
 
-    // Instance Variables
+
     private File currFile;
     private FileWriter fw;
     private Scanner in;
@@ -56,18 +56,13 @@ public class FileManager {
         return coins;
     }
 
-    //public ArrayList<Character> getCharacters(){}
-    //public ArrayList<Companion> getCompanion(){}
-    //public Character getCurrentCharacter(){}
-    //public Companion[] getCurrentCompanions(){}
-    //public ArrayList<Item> getItems(){}
-    //public void getSound(){}
-
     /*
         Gets the sound settings of the User.
     */
     public boolean getSoundOn(){
-        openScanner(soundOnFile);         // Open the Scanner
+
+        // Open the Scanner
+        openScanner("SoundOn");
 
         // Get Data
         String bool = DEFAULT_SOUND_ON;
@@ -96,7 +91,8 @@ public class FileManager {
             bool = in.next();
         }
 
-        closeScanner();                 // Close Scanner
+        // Close Scanner
+        closeScanner();
 
         if (bool.equals("false")) {
             return false;
@@ -155,10 +151,6 @@ public class FileManager {
         return credits;
     }
 
-    //public ArrayList<Enemy> getEnemies(){}
-    //public ArrayList<PowerUp> getPowerUps(){}
-    //public ArrayList<Image> getImages(){}
-
     /***********************************************************************************************************/
 
     // Setters
@@ -186,9 +178,6 @@ public class FileManager {
 
         closeFileWriter();
     }
-
-    //public void updateCurrentCharacter(Character character){}
-    //public void updateCurrentCompanions(Companion[] companions){}
 
     /*
         Updates the Sound Option for the User

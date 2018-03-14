@@ -45,6 +45,7 @@ public class Keyboard {
                 if (t.getCode().equals(KeyCode.SPACE)) {
                     spacePressed = true;
                 }
+
                 if (t.getCode().equals(KeyCode.Q)) {
                     QPressed = true;
                 }if (t.getCode().equals(KeyCode.E)) {

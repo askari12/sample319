@@ -7,8 +7,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -20,12 +18,10 @@ public class Main extends Application {
     private Stage primaryStage;
     private Parent root;
     private Keyboard keyboard;
-private  Companion companion;
-    private  Companion companion2;
-    private Character player;
-    private Lab lab;
-    private ArrayList<Enemy> enemyList;
 
+    private Character player;
+    //private ArrayList<Enemy> enemyList;
+    private Enemy enemy;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -36,9 +32,17 @@ private  Companion companion;
 
         primaryStage.setTitle("Hello World");
         primaryStage.setScene(new Scene(root, 700  , 1000));
+        primaryStage.show();
 
-        FileInputStream is = new FileInputStream("C:\\Users\\Enes Varol\\IdeaProjects\\src\\resources\\image.jpeg");
-        FileInputStream iss=is;
+        keyboard = new Keyboard(primaryStage);
+        keyboard.kbInputs();
+
+        createPlayer();
+        player.renderobject();
+
+        createEnemy();
+        enemy.renderobject();
+
         new AnimationTimer() {
             @Override
             public void handle(long l) {
@@ -46,29 +50,14 @@ private  Companion companion;
             }
         }.start();
 
-        primaryStage.show();
-
-        keyboard = new Keyboard(primaryStage);
-        keyboard.kbInputs();
-
-        createPlayer();
-        createCompanion();
-        createLab();
-        player.renderobject();
-        companion.renderobject();
-        companion2.renderobject();
-        lab.renderobject();
     }
 
     public void update() {
         player.move();
         player.wrap();
-        companion.move();
-    companion.wrap();
-    companion2.move2();
-    companion2.wrap();
-    lab.move();
-    lab.wrap();
+
+        enemy.move();
+
     }
 
     public void createPlayer() {
@@ -77,7 +66,7 @@ private  Companion companion;
                     new Location(500 , 300) ,
                     new Dimension(20) ,
                     new Movement(0 , 0 , 5) ,
-                    new Image(new FileInputStream("C:\\Users\\Enes Varol\\IdeaProjects\\src\\resources\\image.jpeg")) ,
+                    new Image(new FileInputStream("/home/askari/Pictures/aliensprite.png")) ,
                     0,
                     root,
                     keyboard);
@@ -85,50 +74,24 @@ private  Companion companion;
             e.printStackTrace();
         }
     }
-    public void createCompanion() {
-        try {
-            companion = new Companion(
-                    new Location(500, 300),
-                    new Dimension(20),
-                    new Movement(0, 0, 5),
-                    new Image(new FileInputStream("C:\\Users\\Enes Varol\\IdeaProjects\\src\\resources\\image.jpeg")),
-                    0,
-                    root,
-                    keyboard,player) {
-            };
-            companion2 = new Companion(
-                    new Location(500, 300),
-                    new Dimension(20),
-                    new Movement(0, 0, 5),
-                    new Image(new FileInputStream("C:\\Users\\Enes Varol\\IdeaProjects\\src\\resources\\image.jpeg")),
-                    0,
-                    root,
-                    keyboard,player) {
-            };
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-    }public void createLab() {
-        try {
-            lab = new Lab(
-                    new Location(500, 100),
-                    new Dimension(20),
-                    new Movement(0, 0, 5),
-                    new Image(new FileInputStream("C:\\Users\\Enes Varol\\IdeaProjects\\src\\resources\\image.jpeg"))
-                    ) {
-            };
-        } catch (FileNotFoundException e) {
+
+    public void createEnemy() {
+        try{
+
+            enemy = new Ta(
+                    new Location(100 , 100) ,
+                    new Dimension(10) ,
+                    new Movement(1 , 0 , 5) ,
+                    new Image(new FileInputStream("/home/askari/Pictures/aliensprite.png")),
+                    root
+            );
+
+        } catch ( FileNotFoundException e ) {
             e.printStackTrace();
         }
     }
-
 
     public static void main(String[] args) throws IOException {
-        FileManager fm = new FileManager();
-        fm.updateSound(true);
-        System.out.println(fm.getSoundOn());
-
         launch(args);
     }
-
 }

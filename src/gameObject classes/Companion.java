@@ -7,23 +7,21 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 
-
 public abstract class Companion extends AttackingObject {
     private int type;
     private Parent root;
     private Keyboard kb;
     private Circle companion;
-    private Character character;
+
     private int timer;
     private int maxTimer;
 
     private Bullet bullet;
-    public Companion(Location loc, Dimension dimensions, Movement movement, Image img, int type, Parent root , Keyboard kb, sample.Character character){
+    public Companion(Location loc, Dimension dimensions, Movement movement, Image img){
         super(loc, dimensions, movement, img);
         this.type = type;
         this.root = root;
         this.kb = kb;
-        this.character=character;
         maxTimer = 25;
         timer = 0;
     }
@@ -50,41 +48,27 @@ public abstract class Companion extends AttackingObject {
         bullet.renderobject();
     }
     public void move() {
-        if (true) {
-            loc.setX(character.getX()-40);
+        if (kb.getRightPressed()) {
+            loc.setX(loc.getX() - movement.getspeed());
             companion.setCenterX(loc.getX());
-            loc.setY(character.getY()+40);
-            companion.setCenterY(loc.getY());
-
-        }
-        if (true) {
-            if (bullet == null) {
-                shoot();
-            }
         }
 
-        if (bullet != null) {
-            timer++;
-
-            bullet.move();
-
-            if (timer >= maxTimer){
-                timer = 0;
-                bullet.destroy();
-                bullet = null;
-            }
-        }
-    }
-
-    public void move2() {
-        if (true) {
-            loc.setX(character.getX()+40);
+        if (kb.getLeftPressed()) {
+            loc.setX(loc.getX() + movement.getspeed());
             companion.setCenterX(loc.getX());
-            loc.setY(character.getY()+40);
-            companion.setCenterY(loc.getY());
-
         }
-        if (true) {
+
+        if (kb.getUpPressed()) {
+            loc.setY(loc.getY() - movement.getspeed());
+            companion.setCenterY(loc.getY());
+        }
+
+        if (kb.getDownPressed()) {
+            loc.setY(loc.getY() + movement.getspeed());
+            companion.setCenterY(loc.getY());
+        }
+
+        if (kb.getSpacePressed()) {
             if (bullet == null) {
                 shoot();
             }

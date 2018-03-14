@@ -9,11 +9,15 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 
 public class Obstacle extends Enemy
-{    private Bullet bullet;
+{
+
+    private Bullet bullet;
     private Circle enemy;
     private Parent root;
-    public Obstacle(Location loc, Dimension dimensions, Movement movement, Image img, int type) {
+
+    public Obstacle(Location loc, Dimension dimensions, Movement movement, Image img, Parent root) {
         super(loc, dimensions, movement, img);
+        this.root = root;
     }
 
     @Override

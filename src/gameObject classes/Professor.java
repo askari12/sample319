@@ -13,6 +13,7 @@ public class Professor extends Enemy
     private Parent root;
     private Circle enemy;
     private Bullet bullet;
+
     public Professor(Location loc, Dimension dimensions, Movement movement, Image img) {
         super(loc, dimensions, movement,img);
     }
