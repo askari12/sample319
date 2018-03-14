@@ -24,7 +24,7 @@ public class Character extends AttackingObject{
         this.type = type;
         this.root = root;
         this.kb = kb;
-        maxTimer = 25;
+        maxTimer = 60;
         timer = 0;
     }
 

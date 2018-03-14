@@ -23,7 +23,7 @@ public class Ta extends Enemy
         bullet = new Bullet(
                 new Location(loc.getX() , loc.getY()) ,
                 new Dimension(5) ,
-                new Movement(0 , -1 , 15),
+                new Movement(0 , -1 , 1),
                 1 , root);
         bullet.renderobject();
     }
@@ -31,7 +31,7 @@ public class Ta extends Enemy
     @Override
     public void move() {
         loc.setY(loc.getY() + movement.getspeed());
-        //enemy.setCenterY(loc.getY());
+        enemy.setCenterY(loc.getY());
     }
 
     @Override

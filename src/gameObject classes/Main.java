@@ -58,6 +58,7 @@ public class Main extends Application {
 
         enemy.move();
 
+
     }
 
     public void createPlayer() {
@@ -66,7 +67,7 @@ public class Main extends Application {
                     new Location(500 , 300) ,
                     new Dimension(20) ,
                     new Movement(0 , 0 , 5) ,
-                    new Image(new FileInputStream("/home/askari/Pictures/aliensprite.png")) ,
+                    new Image(new FileInputStream("C:\\Users\\Enes Varol\\IdeaProjects\\src\\resources\\image.jpeg")) ,
                     0,
                     root,
                     keyboard);
@@ -82,7 +83,7 @@ public class Main extends Application {
                     new Location(100 , 100) ,
                     new Dimension(10) ,
                     new Movement(1 , 0 , 5) ,
-                    new Image(new FileInputStream("/home/askari/Pictures/aliensprite.png")),
+                    new Image(new FileInputStream("C:\\Users\\Enes Varol\\IdeaProjects\\src\\resources\\image.jpeg")),
                     root
             );
 

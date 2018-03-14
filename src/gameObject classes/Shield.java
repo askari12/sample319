@@ -1,8 +1,25 @@
+package  sample;
 import javafx.scene.image.Image;
 
 public class Shield extends PowerUp {
-    protected void powerUp(Location loc, Dimension dimensions, Movement movement, Image img){
+    public  Shield(Location loc, Dimension dimensions, Movement movement, Image img){
         super(loc,dimensions,movement,img);
     }
-    protected void powers(){}
+
+    @Override
+    public void powerUp(Location loc, Dimension dimensions, Movement movement, Image img) {
+
+    }
+
+    public void powers(){}
+
+    @Override
+    public void renderobject() {
+
+    }
+
+    @Override
+    public void destroy() {
+
+    }
 }
