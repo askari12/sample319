@@ -81,7 +81,7 @@ public class Character extends AttackingObject{
             player.setCenterY(loc.getY());
         }
 
-        if (kb.getSpacePressed()) {
+        if (true) {
             if (bullet == null) {
                 shoot();
             }

@@ -17,9 +17,12 @@ public class Main extends Application {
 
     private Stage primaryStage;
     private Parent root;
+
     private Keyboard keyboard;
 
     private Character player;
+    private Companion companion;
+    private Companion companion2;
     //private ArrayList<Enemy> enemyList;
     private Enemy enemy;
 
@@ -39,7 +42,9 @@ public class Main extends Application {
 
         createPlayer();
         player.renderobject();
-
+        createCompanions();
+        companion.renderobject();
+        companion2.renderobject();
         createEnemy();
         enemy.renderobject();
 
@@ -55,6 +60,8 @@ public class Main extends Application {
     public void update() {
         player.move();
         player.wrap();
+        companion.move();
+        companion2.move();
 
         enemy.move();
 
@@ -71,6 +78,32 @@ public class Main extends Application {
                     0,
                     root,
                     keyboard);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+    public void createCompanions() {
+        try {
+            companion = new Companion(
+                    new Location(450 , 350) ,
+                    new Dimension(20) ,
+                    new Movement(0 , 0 , 5) ,
+                    new Image(new FileInputStream("C:\\Users\\Enes Varol\\IdeaProjects\\src\\resources\\image.jpeg")) ,
+                    0,
+                    root,
+                    keyboard);
+
+            companion2 = new Companion(
+                    new Location(550 , 350) ,
+                    new Dimension(20) ,
+                    new Movement(0 , 0 , 5) ,
+                    new Image(new FileInputStream("C:\\Users\\Enes Varol\\IdeaProjects\\src\\resources\\image.jpeg")) ,
+                    0,
+                    root,
+                    keyboard);
+
+
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

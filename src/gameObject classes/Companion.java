@@ -7,7 +7,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 
-public abstract class Companion extends AttackingObject {
+public  class Companion extends AttackingObject {
     private int type;
     private Parent root;
     private Keyboard kb;
@@ -17,12 +17,12 @@ public abstract class Companion extends AttackingObject {
     private int maxTimer;
 
     private Bullet bullet;
-    public Companion(Location loc, Dimension dimensions, Movement movement, Image img){
+    public Companion(Location loc, Dimension dimensions, Movement movement, Image img, int type, Parent root , Keyboard kb){
         super(loc, dimensions, movement, img);
         this.type = type;
         this.root = root;
         this.kb = kb;
-        maxTimer = 25;
+        maxTimer = 60;
         timer = 0;
     }
     public void renderobject() {
@@ -68,7 +68,7 @@ public abstract class Companion extends AttackingObject {
             companion.setCenterY(loc.getY());
         }
 
-        if (kb.getSpacePressed()) {
+        if (true) {
             if (bullet == null) {
                 shoot();
             }
