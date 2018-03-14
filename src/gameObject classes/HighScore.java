@@ -8,7 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-public class HighScore {
+public class HighScore {//UI for highscore
 
     @FXML
     private Button backButton;

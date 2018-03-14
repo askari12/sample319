@@ -1,6 +1,6 @@
 package sample;
 
-public class Movement{
+public class Movement{// movement attribute for every object
 
     private int dx;
     private int dy;

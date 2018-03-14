@@ -9,5 +9,6 @@ public abstract class Enemy extends DestroyableObject
     {
         super(loc, dimensions, movement, img);
     }
+
 }
 

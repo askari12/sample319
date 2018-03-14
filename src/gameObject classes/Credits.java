@@ -8,7 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-public class Credits {
+public class Credits {//credits uı code
 
     @FXML
     private Button backButton;

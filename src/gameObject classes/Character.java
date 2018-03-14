@@ -6,20 +6,20 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
-
+//all needed imports
 
 public class Character extends AttackingObject{
 
     private int type;
     private Parent root;
-    private Keyboard kb;
-    private Circle player;
+    private Keyboard kb;//to be able to listen keyboard inputs
+    private Circle player;//to be able to show character image on screen
 
-    private int timer;
-    private int maxTimer;
-    public Bullet bullet;
+    private int timer;      //
+    private int maxTimer;   //Needed variables for determining bullet range
+    public Bullet bullet;   //
 
-    public Character(Location loc, Dimension dimensions, Movement movement, Image img, int type, Parent root , Keyboard kb){
+    public Character(Location loc, Dimension dimensions, Movement movement, Image img, int type, Parent root , Keyboard kb){//constructor
         super(loc, dimensions, movement, img);
         this.type = type;
         this.root = root;
@@ -32,7 +32,7 @@ public class Character extends AttackingObject{
     }
 
     @Override
-    public void renderobject() {
+    public void renderobject() {//moves character img on screen
         player = new Circle();
         player.setFill(new ImagePattern(this.img));
         player.setStroke(Color.SEAGREEN);
@@ -50,7 +50,7 @@ public class Character extends AttackingObject{
     }
 
     @Override
-    public void shoot() {
+    public void shoot() {//shoots bullets from character by creating instances
         bullet = new Bullet(
                 new Location(loc.getX() , loc.getY()) ,
                 new Dimension(5) ,
@@ -60,7 +60,7 @@ public class Character extends AttackingObject{
     }
 
     @Override
-    public void move() {
+    public void move() {//checks every input case and move character with respect to that
         if (kb.getRightPressed()) {
             loc.setX(loc.getX() - movement.getspeed());
             player.setCenterX(loc.getX());
@@ -81,13 +81,13 @@ public class Character extends AttackingObject{
             player.setCenterY(loc.getY());
         }
 
-        if (true) {
+        if (true) {//shoots bullet continously
             if (bullet == null) {
                 shoot();
             }
         }
 
-        if (bullet != null) {
+        if (bullet != null) {//if time is up deletes the bullet so that bullet wont go forever
 
             timer++;
 
@@ -101,7 +101,7 @@ public class Character extends AttackingObject{
         }
     }
 
-    public void wrap() {
+    public void wrap() {//to move on every inch of screen
         if (getX() < 0 ) {
             setX( (int) root.getScene().getWidth());
         } else if (getX() > root.getScene().getWidth()) {

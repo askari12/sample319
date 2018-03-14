@@ -7,7 +7,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 
-public  class Companion extends AttackingObject {
+public  class Companion extends AttackingObject {//Companions works with the same idea of Character class
     private int type;
     private Parent root;
     private Keyboard kb;
@@ -16,7 +16,7 @@ public  class Companion extends AttackingObject {
     private int timer;
     private int maxTimer;
 
-    private Bullet bullet;
+    public Bullet bullet;
     public Companion(Location loc, Dimension dimensions, Movement movement, Image img, int type, Parent root , Keyboard kb){
         super(loc, dimensions, movement, img);
         this.type = type;

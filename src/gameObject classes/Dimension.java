@@ -1,6 +1,6 @@
 package sample;
 
-public class Dimension{
+public class Dimension{// object dimension needed for collision detection
     private float radius;
 
     public Dimension(float radius){

@@ -1,6 +1,6 @@
 package sample;
 
-public class Location{
+public class Location{      //Location information for every object and distance calculator for 2 objects
     private int x;
     private int y;
     public Location(int xx,int yy){
