@@ -48,6 +48,7 @@ public class Main extends Application {
         createEnemy();
         enemy.renderobject();
 
+
         new AnimationTimer() {
             @Override
             public void handle(long l) {
@@ -62,10 +63,19 @@ public class Main extends Application {
         player.wrap();
         companion.move();
         companion2.move();
+        checkcollisions();
 
-        enemy.move();
 
-
+    }
+    public void checkcollisions(){
+        if(enemy!=null&&player.bullet!=null)
+        if(enemy.hasCollided(player.bullet.loc,player.bullet.dimensions)==true){
+            if(enemy.isDestroyed()==true){
+                enemy.destroy();
+                enemy=null;
+            }else
+                enemy.decreaseHealth(player.bullet.getDamage());
+        }
     }
 
     public void createPlayer() {

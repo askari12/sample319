@@ -22,10 +22,10 @@ public abstract class DestroyableObject extends AttackingObject {
     public void setCurrentHealth(int currentHealth) {
         this.currentHealth = currentHealth;
     }
-    private void decreaseHealth(int damage){
+    public void decreaseHealth(int damage){
 currentHealth=currentHealth-damage;
     }
-    private boolean isDestroyed()
+    public boolean isDestroyed()
     {if (currentHealth<=0)
 return true;
     else

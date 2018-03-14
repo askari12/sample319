@@ -23,7 +23,7 @@ public abstract class GameObject {
     public abstract void renderobject();
     public abstract void destroy();
 
-    private boolean hasCollided(Location loc, Dimension dimensions)
+    public boolean hasCollided(Location loc, Dimension dimensions)
     {
         float distance = this.loc.getDistance(this.loc, loc);
         distance = distance - dimensions.getRadius() - this.dimensions.getRadius();

@@ -19,6 +19,9 @@ public class Bullet extends GameObject {
         this.root = root;
     }
 
+    public int getDamage() {
+        return damage;
+    }
 
     @Override
     public void renderobject() {

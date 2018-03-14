@@ -17,7 +17,7 @@ public class Character extends AttackingObject{
 
     private int timer;
     private int maxTimer;
-    private Bullet bullet;
+    public Bullet bullet;
 
     public Character(Location loc, Dimension dimensions, Movement movement, Image img, int type, Parent root , Keyboard kb){
         super(loc, dimensions, movement, img);

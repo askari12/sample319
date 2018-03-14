@@ -49,6 +49,6 @@ public class Ta extends Enemy
 
     @Override
     public void destroy() {
-
+        enemy.setVisible(false);
     }
 }
