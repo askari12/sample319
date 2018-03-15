@@ -18,9 +18,18 @@ public class GameLoop extends Application {//Class that contains game engine and
     private Stage primaryStage;//For UI
     private Parent root;//For UI
     private Keyboard keyboard;//for keyboard listening
+
     private Character player;//player instance
     private Companion companion;//companion instance
     private Companion companion2;//companion instance
+
+    // Power-up's instances
+    private DoubleBullet doubleBullet;
+    private Mayfest mayfest;
+    private RageMode rageMode;
+    private Shield shield;
+    private AllNighter allNighter;
+
     //private ArrayList<Enemy> enemyList;
     private Ta enemy;//enemy instance
 
@@ -55,16 +64,20 @@ public class GameLoop extends Application {//Class that contains game engine and
     }
 
     public void update() {//gets move and wrap information from characher and companions
+
         player.move();
         player.wrap();
+
         companion.move();
         companion2.move();
         companion.wrap();
         companion2.wrap();
+
         if(enemy!=null){
-        enemy.move();
-        //enemy.wrap();//if you get out from comment enemy will always comes to screen
+            enemy.move();
+            //enemy.wrap();//if you get out from comment enemy will always comes to screen
         }
+
         checkcollisions();
 
 
@@ -75,6 +88,7 @@ public class GameLoop extends Application {//Class that contains game engine and
             if (enemy.hasCollided(player.bullet.loc, player.bullet.dimensions) == true) {
                 if (enemy.isDestroyed() == true) {
                     enemy.destroy();
+                    createPowerUp();
                     enemy = null;
                 } else
                     enemy.decreaseHealth(player.bullet.getDamage());
@@ -83,6 +97,7 @@ public class GameLoop extends Application {//Class that contains game engine and
             if (enemy.hasCollided(companion.bullet.loc, companion.bullet.dimensions) == true) {
                 if (enemy.isDestroyed() == true) {
                     enemy.destroy();
+                    createPowerUp();
                     enemy = null;
                 } else
                     enemy.decreaseHealth(companion.bullet.getDamage());
@@ -91,6 +106,7 @@ public class GameLoop extends Application {//Class that contains game engine and
             if (enemy.hasCollided(companion2.bullet.loc, companion2.bullet.dimensions) == true) {
                 if (enemy.isDestroyed() == true) {
                     enemy.destroy();
+                    createPowerUp();
                     enemy = null;
                 } else
                     enemy.decreaseHealth(companion2.bullet.getDamage());
@@ -101,9 +117,9 @@ public class GameLoop extends Application {//Class that contains game engine and
         try {
             player = new Character(
                     new Location(500, 300),
-                    new Dimension(20),
+                    new Dimension(12),
                     new Movement(0, 0, 5),
-                    new Image(new FileInputStream("C:\\Users\\Enes Varol\\IdeaProjects\\src\\resources\\image.jpeg")),
+                    new Image(new FileInputStream("C:\\Users\\MONSTER\\IdeaProjects\\src\\resources\\IMG_8657.JPG")),
                     0,
                     root,
                     keyboard);
@@ -117,18 +133,18 @@ public class GameLoop extends Application {//Class that contains game engine and
         try {
             companion = new Companion(
                     new Location(450, 350),
-                    new Dimension(20),
+                    new Dimension(10),
                     new Movement(0, 0, 5),
-                    new Image(new FileInputStream("C:\\Users\\Enes Varol\\IdeaProjects\\src\\resources\\image.jpeg")),
+                    new Image(new FileInputStream("C:\\Users\\MONSTER\\IdeaProjects\\src\\resources\\IMG_8657.JPG")),
                     0,
                     root,
                     keyboard);
 
             companion2 = new Companion(
                     new Location(550, 350),
-                    new Dimension(20),
+                    new Dimension(10),
                     new Movement(0, 0, 5),
-                    new Image(new FileInputStream("C:\\Users\\Enes Varol\\IdeaProjects\\src\\resources\\image.jpeg")),
+                    new Image(new FileInputStream("C:\\Users\\MONSTER\\IdeaProjects\\src\\resources\\IMG_8657.JPG")),
                     0,
                     root,
                     keyboard);
@@ -138,15 +154,104 @@ public class GameLoop extends Application {//Class that contains game engine and
             e.printStackTrace();
         }
     }
+    public void createPowerUp(){ // creates a power up when an enemy dies
+        //
+        // TODO
+        // check if the enemy is dead or not
+        //
+        if(enemy.enemyDestroyed()) {
+            double randomNumber = 4 * Math.random();
+            if (randomNumber <= 4) {
+                double randomBuff = 5 * Math.random();
+                if (randomBuff < 1) { // double bullet
+                    try {
+
+                        doubleBullet = new DoubleBullet(
+                                new Location(enemy.getX(), enemy.getY()),
+                                new Dimension(10),
+                                new Movement(1, 1, 1),
+                                new Image(new FileInputStream("C:\\Users\\MONSTER\\IdeaProjects\\src\\resources\\powerUp.png")),
+                                root
+                        );
+                        doubleBullet.renderobject();
+
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                } else if (randomBuff > 1 && randomBuff < 2) { // mayfest
+                    try {
+
+                        mayfest = new Mayfest(
+                                new Location(enemy.getX(), enemy.getY()),
+                                new Dimension(10),
+                                new Movement(1, 1, 1),
+                                new Image(new FileInputStream("C:\\Users\\MONSTER\\IdeaProjects\\src\\resources\\powerUp.png")),
+                                root
+                        );
+                        mayfest.renderobject();
+
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                } else if (randomBuff > 2 && randomBuff < 3) { // shield
+                    try {
+
+                        shield = new Shield(
+                                new Location(enemy.getX(), enemy.getY()),
+                                new Dimension(10),
+                                new Movement(1, 1, 1),
+                                new Image(new FileInputStream("C:\\Users\\MONSTER\\IdeaProjects\\src\\resources\\powerUp.png")),
+                                root
+                        );
+                        shield.renderobject();
+
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                } else if (randomBuff > 3 && randomBuff < 4) { // all nighter
+                    try {
+
+                        allNighter = new AllNighter(
+                                new Location(enemy.getX(), enemy.getY()),
+                                new Dimension(10),
+                                new Movement(1, 1, 1),
+                                new Image(new FileInputStream("C:\\Users\\MONSTER\\IdeaProjects\\src\\resources\\powerUp.png")),
+                                root
+                        );
+                        allNighter.renderobject();
+
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                } else if (randomBuff > 4 && randomBuff < 5) { // rage mode
+                    try {
+
+                        rageMode = new RageMode(
+                                new Location(enemy.getX(), enemy.getY()),
+                                new Dimension(10),
+                                new Movement(1, 1, 1),
+                                new Image(new FileInputStream("C:\\Users\\MONSTER\\IdeaProjects\\src\\resources\\powerUp.png")),
+                                root
+                        );
+                        rageMode.renderobject();
+
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+
+    }
 
     public void createEnemy() {//enemy instance being created
         try {
 
             enemy = new Ta(
-                    new Location(100, 100),
-                    new Dimension(10),
-                    new Movement(1, 0, 5),
-                    new Image(new FileInputStream("C:\\Users\\Enes Varol\\IdeaProjects\\src\\resources\\image.jpeg")),
+                    new Location(253, 0),
+                    new Dimension(14),
+                    new Movement(1, 0, 1),
+                    new Image(new FileInputStream("C:\\Users\\MONSTER\\IdeaProjects\\src\\resources\\image.jpeg")),
                     root
             );
 
