@@ -111,6 +111,7 @@ public class GameLoop extends Application {//Class that contains game engine and
             }
         }
         if (enemy != null )
+            if(enemy.bullet!=null)
             if (enemy.bullet.hasCollided(player.loc, player.dimensions) == true) {
                 if(player.openshield()==true){
                     player.closeshield();
