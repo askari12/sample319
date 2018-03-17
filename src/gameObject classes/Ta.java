@@ -81,7 +81,7 @@ public class Ta extends Enemy
     }
     public boolean enemyDestroyed(){
         if(super.isDestroyed()){
-            destroy();
+
             return true;
         }
         return false;

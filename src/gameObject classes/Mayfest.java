@@ -51,5 +51,8 @@ public class Mayfest extends PowerUp {
     @Override
     public void destroy() {
 
+        mayfest.setVisible(false);
+
+
     }
 }

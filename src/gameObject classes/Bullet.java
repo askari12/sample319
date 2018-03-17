@@ -22,7 +22,9 @@ public class Bullet extends GameObject {
     public int getDamage() {
         return damage;
     }
-
+    public void setDamage(int damagee) {
+        damage=damagee;
+    }
     @Override
     public void renderobject() {//moves bullet image on screen
         bullet = new Circle();

@@ -49,5 +49,8 @@ public class AllNighter extends PowerUp {
     @Override
     public void destroy() {
 
+        allNighter.setVisible(false);
+
+
     }
 }

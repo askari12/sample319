@@ -75,11 +75,9 @@ public class GameLoop extends Application {//Class that contains game engine and
 
         if(enemy!=null){
             enemy.move();
-
         }
 
         checkcollisions();
-
 
     }
 
@@ -140,6 +138,58 @@ public class GameLoop extends Application {//Class that contains game engine and
                 } else
                     enemy.decreaseHealth(companion2.bullet.getDamage());
             }
+
+        if (doubleBullet!=null)
+            if(doubleBullet.hasCollided(player.loc,player.dimensions)){
+                player.doubleshoot();
+                doubleBullet.destroy();
+                doubleBullet=null;
+
+            }
+        if(mayfest!=null)
+            if(mayfest.hasCollided(player.loc,player.dimensions)){
+                player.movement.setSpeed(3);
+                companion.movement.setSpeed(3);
+                companion2.movement.setSpeed(3);
+                player.bullet.setDamage(5);
+                companion.bullet.setDamage(5);
+                companion2.bullet.setDamage(5);
+                player.decreaseHealth(5);
+                mayfest.destroy();
+                mayfest=null;
+
+            }
+        if(shield!=null)
+            if(shield.hasCollided(player.loc,player.dimensions)){
+                player.openshield();
+                shield.destroy();
+                shield=null;
+
+            }
+
+        if(allNighter!=null)
+            if(allNighter.hasCollided(player.loc,player.dimensions)){
+                player.movement.setSpeed(3);
+                companion.movement.setSpeed(3);
+                companion2.movement.setSpeed(3);
+                allNighter.destroy();
+                allNighter=null;
+
+            }
+
+        if(rageMode!=null)
+            if(rageMode.hasCollided(player.loc,player.dimensions)){
+                player.movement.setSpeed(10);
+                companion.movement.setSpeed(10);
+                companion2.movement.setSpeed(10);
+                player.bullet.setDamage(20);
+                companion.bullet.setDamage(20);
+                companion2.bullet.setDamage(20);
+                rageMode.destroy();
+                rageMode=null;
+
+            }
+
     }
 
     public void createPlayer() {//player instance being created
@@ -184,29 +234,24 @@ public class GameLoop extends Application {//Class that contains game engine and
         }
     }
     public void createPowerUp(){ // creates a power up when an enemy dies
-        if(enemy.enemyDestroyed()) {
             double randomNumber = 4 * Math.random();
             if (randomNumber <= 4) {
                 double randomBuff = 5 * Math.random();
                 if (randomBuff < 1) { // double bullet
                     try {
-
                         doubleBullet = new DoubleBullet(
                                 new Location(enemy.getX(), enemy.getY()),
                                 new Dimension(10),
                                 new Movement(1, 1, 1),
                                 new Image(new FileInputStream("C:\\Users\\Enes Varol\\IdeaProjects\\src\\resources\\image.jpeg")),
-                                root
-                        );
+                                root);
                         doubleBullet.renderobject();
-                        if(doubleBullet.hasCollided(player.loc,player.dimensions)){
-                            player.doubleshoot();
-                        }
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                     }
 
                 } else if (randomBuff > 1 && randomBuff < 2) { // mayfest
+
                     try {
 
                         mayfest = new Mayfest(
@@ -217,16 +262,32 @@ public class GameLoop extends Application {//Class that contains game engine and
                                 root
                         );
                         mayfest.renderobject();
-                        if(mayfest.hasCollided(player.loc,player.dimensions)){
 
-                        }
+
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                     }
                 } else if (randomBuff > 2 && randomBuff < 3) { // shield
-                    player.openshield();
+
+                    try {
+
+                        shield = new Shield(
+                                new Location(enemy.getX(), enemy.getY()),
+                                new Dimension(10),
+                                new Movement(1, 1, 1),
+                                new Image(new FileInputStream("C:\\Users\\Enes Varol\\IdeaProjects\\src\\resources\\image.jpeg")),
+                                root
+                        );
+                        shield.renderobject();
+
+
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+
 
                 } else if (randomBuff > 3 && randomBuff < 4) { // all nighter
+
                     try {
 
                         allNighter = new AllNighter(
@@ -238,10 +299,12 @@ public class GameLoop extends Application {//Class that contains game engine and
                         );
                         allNighter.renderobject();
 
+
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                     }
                 } else if (randomBuff > 4 && randomBuff < 5) { // rage mode
+
                     try {
 
                         rageMode = new RageMode(
@@ -253,12 +316,14 @@ public class GameLoop extends Application {//Class that contains game engine and
                         );
                         rageMode.renderobject();
 
+
+
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                     }
                 }
             }
-        }
+
 
     }
 

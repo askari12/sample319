@@ -49,6 +49,6 @@ public class RageMode extends PowerUp {
 
     @Override
     public void destroy() {
-
+rageMode.setVisible(false);
     }
 }

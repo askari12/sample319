@@ -48,6 +48,6 @@ public class Shield extends PowerUp {
 
     @Override
     public void destroy() {
-
+shield.setVisible(false);
     }
 }

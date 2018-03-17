@@ -32,7 +32,9 @@ public class Character extends DestroyableObject{
 
     public Character(){
     }
-
+    public void openragemode(){
+        
+    }
     public boolean openshield(){
         shield=true;
         return shield;
@@ -66,18 +68,16 @@ public class Character extends DestroyableObject{
                 new Movement(0 , -1 , 15),
                 5 , root);
         bullet.renderobject();
-//        if(isdshoot==true){
-//        long currenttime=System.currentTimeMillis();
-//
-//            bullett = new Bullet(
-//                    new Location(loc.getX() + 5, loc.getY()),
-//                    new Dimension(5),
-//                    new Movement(0, -1, 15),
-//                    5, root);
-//            bullett.renderobject();
-//
-//    }
-//        isdshoot=false;
+        if(isdshoot==true){
+                    bullett = new Bullet(
+                    new Location(loc.getX() + 5, loc.getY()),
+                    new Dimension(5),
+                    new Movement(0, -1, 15),
+                    5, root);
+            bullett.renderobject();
+
+    }
+        isdshoot=false;
     }
 
     public void doubleshoot() {//shoots bullets from character by creating instances
