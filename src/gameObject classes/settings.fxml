@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.control.ToggleButton?>
-<?import javafx.geometry.Insets?>
-<BorderPane style="-fx-background-image: url('https://github.com/askari12/2I.A-day-in-BIlkent/blob/Unstable/doc/Analysis%20Report%20Sections/2cabe09d%20(1).jpg?raw=true');" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Settings">
+
+<BorderPane style="-fx-background-image: url('https://raw.githubusercontent.com/askari12/2I.A-day-in-BIlkent/Unstable/doc/Analysis%20Report%20Sections/Bilkent-02.jpg');" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Settings">
 
     <top>
 
-        <Button fx:id="backButton" alignment="TOP_LEFT" mnemonicParsing="false" style="-fx-background-color: #FFFFFF;" text="Main Menu" onAction="#backButtonListener">
+        <Button fx:id="backButton" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#backButtonListener" style="-fx-background-color: #FFFFFF;" text="Main Menu">
 
             <padding>
-                <Insets top="10" left="10"/>
+                <Insets left="10" top="10" />
             </padding>
 
             <font>
@@ -30,7 +31,7 @@
 
         <VBox alignment="TOP_CENTER" spacing="50" xmlns:fx="http://javafx.com/fxml">
 
-            <Label style="-fx-font-weight: bold" text="Settings" BorderPane.alignment="CENTER" >
+            <Label style="-fx-font-weight: bold" text="Settings" BorderPane.alignment="CENTER">
                 <font>
                     <Font name="Courier" size="30.0" />
                 </font>
@@ -44,7 +45,7 @@
                     </font>
                 </Label>
 
-                <CheckBox fx:id="musicCheckBox" onAction="#musicCheckBoxListener"/>
+                <CheckBox fx:id="musicCheckBox" onAction="#musicCheckBoxListener" />
 
             </HBox>
 
@@ -56,7 +57,7 @@
                     </font>
                 </Label>
 
-                <CheckBox fx:id="audioCheckBox" onAction="#audioCheckBoxListener"/>
+                <CheckBox fx:id="audioCheckBox" onAction="#audioCheckBoxListener" />
 
             </HBox>
 
@@ -69,9 +70,9 @@
                 </Label>
 
                 <HBox alignment="TOP_CENTER" xmlns:fx="http://javafx.com/fxml">
-                    <ToggleButton fx:id="easyToggleButton" text="Easy" onAction="#easyToggleButtonListener" />
-                    <ToggleButton fx:id="mediumToggleButton" text="Medium" onAction="#mediumToggleButtonListener"/>
-                    <ToggleButton fx:id="hardToggleButton" text="Hard" onAction="#hardToggleButtonListener"/>
+                    <ToggleButton fx:id="easyToggleButton" onAction="#easyToggleButtonListener" text="Easy" />
+                    <ToggleButton fx:id="mediumToggleButton" onAction="#mediumToggleButtonListener" text="Medium" />
+                    <ToggleButton fx:id="hardToggleButton" onAction="#hardToggleButtonListener" text="Hard" />
                 </HBox>
 
             </HBox>

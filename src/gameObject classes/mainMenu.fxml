@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane style="-fx-background-image: url('https://github.com/askari12/2I.A-day-in-BIlkent/blob/Unstable/doc/Analysis%20Report%20Sections/2cabe09d%20(1).jpg?raw=true');" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainMenu">
+<BorderPane style="-fx-background-image: url('https://raw.githubusercontent.com/askari12/2I.A-day-in-BIlkent/Unstable/doc/Analysis%20Report%20Sections/Bilkent-02.jpg');" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainMenu">
 
     <top>
         <Label style="-fx-font-weight: bold" text="A Day in Bilkent" BorderPane.alignment="CENTER">
@@ -19,43 +19,43 @@
     <center>
         <VBox alignment="CENTER" spacing="10" xmlns:fx="http://javafx.com/fxml">
 
-            <Button fx:id="playGameButton" mnemonicParsing="false" style="-fx-background-color: #94CAFF;" text="Play Game" onAction="#playGameButtonListener">
+            <Button fx:id="playGameButton" mnemonicParsing="false" onAction="#playGameButtonListener" style="-fx-background-color: #94CAFF;" text="Play Game">
                 <font>
                     <Font name="Courier" />
                 </font>
             </Button>
 
-            <Button fx:id="selectCharacterButton" mnemonicParsing="false" style="-fx-background-color: #94CAFF;" text="Select Character" onAction="#selectCharacterButtonListener">
+            <Button fx:id="selectCharacterButton" mnemonicParsing="false" onAction="#selectCharacterButtonListener" style="-fx-background-color: #94CAFF;" text="Select Character">
                 <font>
                     <Font name="Courier" />
                 </font>
             </Button>
 
-            <Button fx:id="selectCompanionButton" mnemonicParsing="false" style="-fx-background-color: #94CAFF;" text="Select Companion" onAction="#selectCompanionButtonListener">
+            <Button fx:id="selectCompanionButton" mnemonicParsing="false" onAction="#selectCompanionButtonListener" style="-fx-background-color: #94CAFF;" text="Select Companion">
                 <font>
                     <Font name="Courier" />
                 </font>
             </Button>
 
-            <Button fx:id="shopButton" mnemonicParsing="false" style="-fx-background-color: #94CAFF;" text="Shop" onAction="#shopButtonListener">
+            <Button fx:id="shopButton" mnemonicParsing="false" onAction="#shopButtonListener" style="-fx-background-color: #94CAFF;" text="Shop">
                 <font>
                     <Font name="Courier" />
                 </font>
             </Button>
 
-            <Button fx:id="highScoreButton" mnemonicParsing="false" style="-fx-background-color: #94CAFF;" text="High Score" onAction="#highScoreButtonListener">
+            <Button fx:id="highScoreButton" mnemonicParsing="false" onAction="#highScoreButtonListener" style="-fx-background-color: #94CAFF;" text="High Score">
                 <font>
                     <Font name="Courier" />
                 </font>
             </Button>
 
-            <Button fx:id="settingsButton" mnemonicParsing="false" style="-fx-background-color: #94CAFF;" text="Settings" onAction="#settingsButtonListener">
+            <Button fx:id="settingsButton" mnemonicParsing="false" onAction="#settingsButtonListener" style="-fx-background-color: #94CAFF;" text="Settings">
                 <font>
                     <Font name="Courier" />
                 </font>
             </Button>
 
-            <Button fx:id="creditsButton" mnemonicParsing="false" style="-fx-background-color: #94CAFF;" text="Credits" onAction="#creditsButtonListener">
+            <Button fx:id="creditsButton" mnemonicParsing="false" onAction="#creditsButtonListener" style="-fx-background-color: #94CAFF;" text="Credits">
                 <font>
                     <Font name="Courier" />
                 </font>
