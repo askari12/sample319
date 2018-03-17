@@ -8,7 +8,7 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 //all needed imports
 
-public class Character extends AttackingObject{
+public class Character extends DestroyableObject{
 
     private int type;
     private Parent root;
@@ -18,7 +18,9 @@ public class Character extends AttackingObject{
     private int timer;      //
     private int maxTimer;   //Needed variables for determining bullet range
     public Bullet bullet;   //
-
+    public Bullet bullett;
+    private boolean isdshoot=false;
+    private boolean shield=false;
     public Character(Location loc, Dimension dimensions, Movement movement, Image img, int type, Parent root , Keyboard kb){//constructor
         super(loc, dimensions, movement, img);
         this.type = type;
@@ -31,6 +33,13 @@ public class Character extends AttackingObject{
     public Character(){
     }
 
+    public boolean openshield(){
+        shield=true;
+        return shield;
+    }
+    public void closeshield(){
+        shield=false;
+}
     @Override
     public void renderobject() {//moves character img on screen
         player = new Circle();
@@ -55,8 +64,25 @@ public class Character extends AttackingObject{
                 new Location(loc.getX() , loc.getY()) ,
                 new Dimension(5) ,
                 new Movement(0 , -1 , 15),
-                1 , root);
+                5 , root);
         bullet.renderobject();
+//        if(isdshoot==true){
+//        long currenttime=System.currentTimeMillis();
+//
+//            bullett = new Bullet(
+//                    new Location(loc.getX() + 5, loc.getY()),
+//                    new Dimension(5),
+//                    new Movement(0, -1, 15),
+//                    5, root);
+//            bullett.renderobject();
+//
+//    }
+//        isdshoot=false;
+    }
+
+    public void doubleshoot() {//shoots bullets from character by creating instances
+        isdshoot=true;
+
     }
 
     @Override
@@ -80,23 +106,48 @@ public class Character extends AttackingObject{
             loc.setY(loc.getY() + movement.getspeed());
             player.setCenterY(loc.getY());
         }
-
+        if(isdshoot==false){
         if (true) {//shoots bullet continously
             if (bullet == null) {
                 shoot();
             }
+        }}else{
+            if (bullet == null) {
+                shoot();
+            }if(bullett== null){
+                doubleshoot();
+            }
+
         }
+        if(isdshoot==false) {
+            if (bullet != null) {//if time is up deletes the bullet so that bullet wont go forever
+                timer++;
+                bullet.move();
 
-        if (bullet != null) {//if time is up deletes the bullet so that bullet wont go forever
-
-            timer++;
-
-            bullet.move();
-
-            if (timer >= maxTimer){
-                timer = 0;
-                bullet.destroy();
-                bullet = null;
+                if (timer >= maxTimer) {
+                    timer = 0;
+                    bullet.destroy();
+                    bullet = null;
+                }
+            }
+        }else{
+            if (bullet != null) {//if time is up deletes the bullet so that bullet wont go forever
+                timer++;
+                bullet.move();
+                if (timer >= maxTimer) {
+                    timer = 0;
+                    bullet.destroy();
+                    bullet = null;
+                }
+            }
+            if (bullett != null) {//if time is up deletes the bullet so that bullet wont go forever
+                timer++;
+                bullett.move();
+                if (timer >= maxTimer) {
+                    timer = 0;
+                    bullett.destroy();
+                    bullett = null;
+                }
             }
         }
     }

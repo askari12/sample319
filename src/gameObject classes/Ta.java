@@ -11,12 +11,13 @@ public class Ta extends Enemy
 {
     private Parent root;
     private Circle enemy;
-    private Bullet bullet;
+    public Bullet bullet;
     private boolean enemyDead;
 
     public Ta(Location loc, Dimension dimensions, Movement movement, Image img , Parent root) {
         super(loc, dimensions, movement , img);
         this.root = root;
+        super.setCurrentHealth(10);
     }
 
     @Override
@@ -76,10 +77,11 @@ public class Ta extends Enemy
     @Override
     public void destroy() {
         enemy.setVisible(false);
-        enemyDead = true;
+
     }
     public boolean enemyDestroyed(){
-        if(enemyDead){
+        if(super.isDestroyed()){
+            destroy();
             return true;
         }
         return false;

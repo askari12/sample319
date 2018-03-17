@@ -75,7 +75,7 @@ public class GameLoop extends Application {//Class that contains game engine and
 
         if(enemy!=null){
             enemy.move();
-            //enemy.wrap();//if you get out from comment enemy will always comes to screen
+
         }
 
         checkcollisions();
@@ -92,6 +92,34 @@ public class GameLoop extends Application {//Class that contains game engine and
                     enemy = null;
                 } else
                     enemy.decreaseHealth(player.bullet.getDamage());
+            }
+        if (enemy != null )
+            if (enemy.hasCollided(player.loc, player.dimensions) == true) {
+                if (enemy.isDestroyed() == true) {
+                    enemy.destroy();
+                    createPowerUp();
+                    enemy = null;
+                } else
+                    enemy.decreaseHealth(player.bullet.getDamage());
+            if(player.openshield()==true){
+                player.closeshield();
+                }else{
+                player.decreaseHealth(enemy.bullet.getDamage());
+                if(player.isDestroyed()==true){
+                    player.destroy();
+                }
+            }
+        }
+        if (enemy != null )
+            if (enemy.bullet.hasCollided(player.loc, player.dimensions) == true) {
+                if(player.openshield()==true){
+                    player.closeshield();
+                }else{
+                    player.decreaseHealth(enemy.bullet.getDamage());
+                    if(player.isDestroyed()==true){
+                        player.destroy();
+                    }
+                }
             }
         if (enemy != null && companion.bullet != null)
             if (enemy.hasCollided(companion.bullet.loc, companion.bullet.dimensions) == true) {
@@ -119,7 +147,7 @@ public class GameLoop extends Application {//Class that contains game engine and
                     new Location(500, 300),
                     new Dimension(12),
                     new Movement(0, 0, 5),
-                    new Image(new FileInputStream("C:\\Users\\MONSTER\\IdeaProjects\\src\\resources\\IMG_8657.JPG")),
+                    new Image(new FileInputStream("C:\\Users\\Enes Varol\\IdeaProjects\\src\\resources\\image.jpeg")),
                     0,
                     root,
                     keyboard);
@@ -135,7 +163,7 @@ public class GameLoop extends Application {//Class that contains game engine and
                     new Location(450, 350),
                     new Dimension(10),
                     new Movement(0, 0, 5),
-                    new Image(new FileInputStream("C:\\Users\\MONSTER\\IdeaProjects\\src\\resources\\IMG_8657.JPG")),
+                    new Image(new FileInputStream("C:\\Users\\Enes Varol\\IdeaProjects\\src\\resources\\image.jpeg")),
                     0,
                     root,
                     keyboard);
@@ -144,7 +172,7 @@ public class GameLoop extends Application {//Class that contains game engine and
                     new Location(550, 350),
                     new Dimension(10),
                     new Movement(0, 0, 5),
-                    new Image(new FileInputStream("C:\\Users\\MONSTER\\IdeaProjects\\src\\resources\\IMG_8657.JPG")),
+                    new Image(new FileInputStream("C:\\Users\\Enes Varol\\IdeaProjects\\src\\resources\\image.jpeg")),
                     0,
                     root,
                     keyboard);
@@ -155,10 +183,6 @@ public class GameLoop extends Application {//Class that contains game engine and
         }
     }
     public void createPowerUp(){ // creates a power up when an enemy dies
-        //
-        // TODO
-        // check if the enemy is dead or not
-        //
         if(enemy.enemyDestroyed()) {
             double randomNumber = 4 * Math.random();
             if (randomNumber <= 4) {
@@ -170,14 +194,17 @@ public class GameLoop extends Application {//Class that contains game engine and
                                 new Location(enemy.getX(), enemy.getY()),
                                 new Dimension(10),
                                 new Movement(1, 1, 1),
-                                new Image(new FileInputStream("C:\\Users\\MONSTER\\IdeaProjects\\src\\resources\\powerUp.png")),
+                                new Image(new FileInputStream("C:\\Users\\Enes Varol\\IdeaProjects\\src\\resources\\image.jpeg")),
                                 root
                         );
                         doubleBullet.renderobject();
-
+                        if(doubleBullet.hasCollided(player.loc,player.dimensions)){
+                            player.doubleshoot();
+                        }
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                     }
+
                 } else if (randomBuff > 1 && randomBuff < 2) { // mayfest
                     try {
 
@@ -185,29 +212,19 @@ public class GameLoop extends Application {//Class that contains game engine and
                                 new Location(enemy.getX(), enemy.getY()),
                                 new Dimension(10),
                                 new Movement(1, 1, 1),
-                                new Image(new FileInputStream("C:\\Users\\MONSTER\\IdeaProjects\\src\\resources\\powerUp.png")),
+                                new Image(new FileInputStream("C:\\Users\\Enes Varol\\IdeaProjects\\src\\resources\\image.jpeg")),
                                 root
                         );
                         mayfest.renderobject();
+                        if(mayfest.hasCollided(player.loc,player.dimensions)){
 
+                        }
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                     }
                 } else if (randomBuff > 2 && randomBuff < 3) { // shield
-                    try {
+                    player.openshield();
 
-                        shield = new Shield(
-                                new Location(enemy.getX(), enemy.getY()),
-                                new Dimension(10),
-                                new Movement(1, 1, 1),
-                                new Image(new FileInputStream("C:\\Users\\MONSTER\\IdeaProjects\\src\\resources\\powerUp.png")),
-                                root
-                        );
-                        shield.renderobject();
-
-                    } catch (FileNotFoundException e) {
-                        e.printStackTrace();
-                    }
                 } else if (randomBuff > 3 && randomBuff < 4) { // all nighter
                     try {
 
@@ -215,7 +232,7 @@ public class GameLoop extends Application {//Class that contains game engine and
                                 new Location(enemy.getX(), enemy.getY()),
                                 new Dimension(10),
                                 new Movement(1, 1, 1),
-                                new Image(new FileInputStream("C:\\Users\\MONSTER\\IdeaProjects\\src\\resources\\powerUp.png")),
+                                new Image(new FileInputStream("C:\\Users\\Enes Varol\\IdeaProjects\\src\\resources\\image.jpeg")),
                                 root
                         );
                         allNighter.renderobject();
@@ -230,7 +247,7 @@ public class GameLoop extends Application {//Class that contains game engine and
                                 new Location(enemy.getX(), enemy.getY()),
                                 new Dimension(10),
                                 new Movement(1, 1, 1),
-                                new Image(new FileInputStream("C:\\Users\\MONSTER\\IdeaProjects\\src\\resources\\powerUp.png")),
+                                new Image(new FileInputStream("C:\\Users\\Enes Varol\\IdeaProjects\\src\\resources\\image.jpeg")),
                                 root
                         );
                         rageMode.renderobject();
@@ -251,7 +268,7 @@ public class GameLoop extends Application {//Class that contains game engine and
                     new Location(253, 0),
                     new Dimension(14),
                     new Movement(1, 0, 1),
-                    new Image(new FileInputStream("C:\\Users\\MONSTER\\IdeaProjects\\src\\resources\\image.jpeg")),
+                    new Image(new FileInputStream("C:\\Users\\Enes Varol\\IdeaProjects\\src\\resources\\image.jpeg")),
                     root
             );
 

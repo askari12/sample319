@@ -44,7 +44,7 @@ public  class Companion extends AttackingObject {//Companions works with the sam
                 new Location(loc.getX() , loc.getY()) ,
                 new Dimension(5) ,
                 new Movement(0 , -1 , 15),
-                1 , root);
+                5 , root);
         bullet.renderobject();
     }
     public void move() {
